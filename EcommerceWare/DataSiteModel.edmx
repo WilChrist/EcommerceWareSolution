@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ASP_ecommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="NumArticle" />
+          </Key>
+          <Property Name="NumArticle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="designation" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="money" />
+          <Property Name="stock" Type="int" />
+          <Property Name="picture" Type="varchar" MaxLength="255" />
+          <Property Name="RefCat" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="RefCat" />
+          </Key>
+          <Property Name="RefCat" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Nomcatg" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Order_">
+          <Key>
+            <PropertyRef Name="NumOrder" />
+          </Key>
+          <Property Name="NumOrder" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateOrder" Type="date" />
+          <Property Name="email_user" Type="varchar" MaxLength="255" />
+          <Property Name="NumArticle" Type="int" />
+          <Property Name="QteArticle" Type="int" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password_" Type="varchar" MaxLength="255" />
+          <Property Name="lastName" Type="varchar" MaxLength="255" />
+          <Property Name="firstName" Type="varchar" MaxLength="255" />
+          <Property Name="city" Type="varchar" MaxLength="255" />
+          <Property Name="phone" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Article__RefCat__29572725">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="RefCat" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="RefCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___email_us__36B12243">
+          <End Role="User_" Type="Self.User_" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="email_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___NumArtic__37A5467C">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="NumArticle" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="NumArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASP_ecommerceModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_" EntityType="Self.Order_" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User_" EntityType="Self.User_" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Article__RefCat__29572725" Association="Self.FK__Article__RefCat__29572725">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___email_us__36B12243" Association="Self.FK__Order___email_us__36B12243">
+            <End Role="User_" EntitySet="User_" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___NumArtic__37A5467C" Association="Self.FK__Order___NumArtic__37A5467C">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ASP_ecommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="NumArticle" />
+          </Key>
+          <Property Name="NumArticle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="designation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="stock" Type="Int32" />
+          <Property Name="picture" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="RefCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Article__RefCat__29572725" FromRole="Article" ToRole="Category" />
+          <NavigationProperty Name="Order_" Relationship="Self.FK__Order___NumArtic__37A5467C" FromRole="Article" ToRole="Order_" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="RefCat" />
+          </Key>
+          <Property Name="RefCat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nomcatg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK__Article__RefCat__29572725" FromRole="Category" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="Order_">
+          <Key>
+            <PropertyRef Name="NumOrder" />
+          </Key>
+          <Property Name="NumOrder" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateOrder" Type="DateTime" Precision="0" />
+          <Property Name="email_user" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="NumArticle" Type="Int32" />
+          <Property Name="QteArticle" Type="Int32" />
+          <NavigationProperty Name="Article" Relationship="Self.FK__Order___NumArtic__37A5467C" FromRole="Order_" ToRole="Article" />
+          <NavigationProperty Name="User_" Relationship="Self.FK__Order___email_us__36B12243" FromRole="Order_" ToRole="User_" />
+        </EntityType>
+        <EntityType Name="User_">
+          <Key>
+            <PropertyRef Name="email" />
+          </Key>
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password_" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="firstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Order_" Relationship="Self.FK__Order___email_us__36B12243" FromRole="User_" ToRole="Order_" />
+        </EntityType>
+        <Association Name="FK__Article__RefCat__29572725">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="RefCat" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="RefCat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___NumArtic__37A5467C">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="NumArticle" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="NumArticle" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Order___email_us__36B12243">
+          <End Role="User_" Type="Self.User_" Multiplicity="0..1" />
+          <End Role="Order_" Type="Self.Order_" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User_">
+              <PropertyRef Name="email" />
+            </Principal>
+            <Dependent Role="Order_">
+              <PropertyRef Name="email_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ASP_ecommerceEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
+          <EntitySet Name="Order_" EntityType="Self.Order_" />
+          <EntitySet Name="User_" EntityType="Self.User_" />
+          <AssociationSet Name="FK__Article__RefCat__29572725" Association="Self.FK__Article__RefCat__29572725">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___NumArtic__37A5467C" Association="Self.FK__Order___NumArtic__37A5467C">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Order___email_us__36B12243" Association="Self.FK__Order___email_us__36B12243">
+            <End Role="User_" EntitySet="User_" />
+            <End Role="Order_" EntitySet="Order_" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ASP_ecommerceModelStoreContainer" CdmEntityContainer="ASP_ecommerceEntities1">
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="ASP_ecommerceModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+                <ScalarProperty Name="designation" ColumnName="designation" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="ASP_ecommerceModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="RefCat" ColumnName="RefCat" />
+                <ScalarProperty Name="Nomcatg" ColumnName="Nomcatg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Order_">
+            <EntityTypeMapping TypeName="ASP_ecommerceModel.Order_">
+              <MappingFragment StoreEntitySet="Order_">
+                <ScalarProperty Name="NumOrder" ColumnName="NumOrder" />
+                <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
+                <ScalarProperty Name="email_user" ColumnName="email_user" />
+                <ScalarProperty Name="NumArticle" ColumnName="NumArticle" />
+                <ScalarProperty Name="QteArticle" ColumnName="QteArticle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User_">
+            <EntityTypeMapping TypeName="ASP_ecommerceModel.User_">
+              <MappingFragment StoreEntitySet="User_">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password_" ColumnName="password_" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
