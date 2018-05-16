@@ -1,0 +1,69 @@
+@Html.ActionLink("Nom de l'application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>E</span>-commerce<span>W</span>are</h1>
+                                <h2>Free Ecommerce Template</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                <button type="button" class="btn btn-default get">Get it now</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="/Content/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                                <img src="/Content/images/home/pricing.png" class="pricing" alt="" />
+                            </div>
+                        </div>
+
+						@foreach (var item in Model)
+                            {
+                                <div class="item">
+                                    <div class="col-sm-6">
+                                        <h1>@item.Name</h1>
+                                        <h2>Cost Price : @item.CostPrice $</h2>
+                                        <p>@item.Description </p>
+                                        <button type="button" class="btn btn-default get">Get it now</button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <img src="@item.ImageUrl" class="girl img-responsive" alt="" />
+                                        <img src="/Content/images/home/pricing.png" class="pricing" alt="@item.CostPrice $" />
+                                    </div>
+                                </div>
+                             }
+
+
+							 List<Products> products = new List<Products>();
+            Products product = new Products()
+            {
+                IdProduct = 0,
+                IdCategory =0,
+                IdProducer =0,
+                Description_Product = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Gross_Price = 17,
+                Net_Price=23,
+                Name_Product = "EcommerceWare0",
+                ImageUrl= "/Content/images/home/girl1.jpg"
+            };
+            products.Add(product);
+            product = new Products()
+            {
+                IdProduct = 0,
+                IdCategory = 0,
+                IdProducer = 0,
+                Description_Product = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Gross_Price = 24,
+                Net_Price = 41,
+                Name_Product = "EcommerceWare0",
+                ImageUrl = "/Content/images/home/girl2.jpg"
+            };
+            products.Add(product);
+            product = new Products()
+            {
+                IdProduct = 0,
+                IdCategory = 0,
+                IdProducer = 0,
+                Description_Product = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                Gross_Price = 7,
+                Net_Price = 20,
+                Name_Product = "EcommerceWare0",
+                ImageUrl = "/Content/images/home/girl3.jpg"
+            };
+            products.Add(product);
