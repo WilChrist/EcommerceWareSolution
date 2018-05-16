@@ -14,10 +14,6 @@ namespace EcommerceWare.API
     using System.Runtime.Serialization;
 
     [DataContract]
-    [KnownType(typeof(Categories))]
-    [KnownType(typeof(Producers))]
-    [KnownType(typeof(Suppliers))]
-    [KnownType(typeof(Taxes_Level))]
     public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -52,24 +48,24 @@ namespace EcommerceWare.API
         [DataMember]
         public string Image_Url { get; set; }
 
-        [DataMember]
+
         public virtual Categories Categories { get; set; }
-        [DataMember]
+
         public virtual Producers Producers { get; set; }
-        [DataMember]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order_Details> Order_Details { get; set; }
-        [DataMember]
+
         public virtual Suppliers Suppliers { get; set; }
-        [DataMember]
+
         public virtual Taxes_Level Taxes_Level { get; set; }
-        [DataMember]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reclamations> Reclamations { get; set; }
-        [DataMember]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Supply_Details> Supply_Details { get; set; }
-        [DataMember]
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Returns> Returns { get; set; }
     }

@@ -22,9 +22,10 @@ namespace EcommerceWare.API.Controllers
         }
 
         // GET api/Ecommerce/5
-        public string Get(int id)
+        public IEnumerable<Products> Gettest(int id)
         {
-            return "value";
+            ecommerceEntities db = new ecommerceEntities();
+            return db.Products;
         }
 
         // POST api/Ecommerce

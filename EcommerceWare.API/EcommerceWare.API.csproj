@@ -234,6 +234,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdressesForView.cs" />
+    <Compile Include="Models\CategoriesForView.cs" />
+    <Compile Include="Models\CustomersForView.cs" />
+    <Compile Include="Models\Login_informationsForView.cs" />
     <Compile Include="Models\ProductForView.cs" />
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
