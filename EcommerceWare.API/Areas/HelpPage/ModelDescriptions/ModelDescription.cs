@@ -1,6 +1,6 @@
 using System;
 
-namespace EcommerceWare.API.Areas.HelpPage.ModelDescriptions
+namespace EcommerceWareAPI.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

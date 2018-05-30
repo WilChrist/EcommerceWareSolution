@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace EcommerceWare.API.Controllers
+namespace EcommerceWareAPI.Controllers
 {
     public class HomeController : Controller
     {

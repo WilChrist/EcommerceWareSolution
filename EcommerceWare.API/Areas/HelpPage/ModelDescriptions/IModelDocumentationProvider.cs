@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace EcommerceWare.API.Areas.HelpPage.ModelDescriptions
+namespace EcommerceWareAPI.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

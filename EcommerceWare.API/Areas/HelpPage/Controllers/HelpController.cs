@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using EcommerceWare.API.Areas.HelpPage.ModelDescriptions;
-using EcommerceWare.API.Areas.HelpPage.Models;
+using EcommerceWareAPI.Areas.HelpPage.ModelDescriptions;
+using EcommerceWareAPI.Areas.HelpPage.Models;
 
-namespace EcommerceWare.API.Areas.HelpPage.Controllers
+namespace EcommerceWareAPI.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

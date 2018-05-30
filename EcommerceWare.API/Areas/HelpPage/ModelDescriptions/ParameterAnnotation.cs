@@ -1,6 +1,6 @@
 using System;
 
-namespace EcommerceWare.API.Areas.HelpPage.ModelDescriptions
+namespace EcommerceWareAPI.Areas.HelpPage.ModelDescriptions
 {
     public class ParameterAnnotation
     {
