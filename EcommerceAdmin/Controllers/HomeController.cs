@@ -12,7 +12,11 @@ namespace EcommerceAdmin.Controllers
         {
             return View();
         }
+        public ActionResult Accueil()
+        {
+            return View();
+        }
 
-        
+
     }
 }
