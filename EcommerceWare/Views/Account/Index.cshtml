@@ -1,6 +1,6 @@
 ﻿@{
     ViewBag.Title = "Account Page";
-    
+
     //var res = ;
 }
 
@@ -12,13 +12,20 @@
                 <div class="login-form">
                     <!--login form-->
                     <h2>Login to your account</h2>
+                    @if (ViewBag.error == "error")
+                    {
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Error!</strong> Your Informations are not valid.
+                        </div>
+                    }
                     <form action="Account/Login" method="post">
-                        <input type="email" name="email" placeholder="Email Address" />
-                        <input type="password" name="password" placeholder="********" />
-                        <span>
-                            <input type="checkbox" name="keep" class="checkbox">
-                            Keep me signed in
-                        </span>
+                        <input type="text" name="Login" placeholder="Login" />
+                        <input type="Password" name="Password" placeholder="********" />
+                        <!--<span>
+            <input type="checkbox" name="keep" class="checkbox">
+            Keep me signed in
+        </span>-->
                         <button type="submit" class="btn btn-default">Login</button>
                     </form>
                 </div><!--/login form-->

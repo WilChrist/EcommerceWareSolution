@@ -1,5 +1,5 @@
 ﻿
-using EcommerceWare.API.Models;
+using EcommerceWare.Models;
 using EcommerceWare.Models;
 using System;
 using System.Collections.Generic;
@@ -17,6 +17,7 @@ namespace EcommerceWare.Controllers
         {
             Donnees donnees = new Donnees();
 
+            donnees.Customers = (CustomersForView)Session["user"];
             HttpClient client = new HttpClient();
 
             // Update port # in the following line.

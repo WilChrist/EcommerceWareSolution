@@ -7,20 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EcommerceWare
+namespace EcommerceWare.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Order_
+    using System.Runtime.Serialization;
+
+    [DataContract]
+    public class CategoriesForView
     {
-        public int NumOrder { get; set; }
-        public Nullable<System.DateTime> DateOrder { get; set; }
-        public string email_user { get; set; }
-        public Nullable<int> NumArticle { get; set; }
-        public Nullable<int> QteArticle { get; set; }
-    
-        //public virtual Article Article { get; set; }
-        public virtual User_ User_ { get; set; }
+        public CategoriesForView()
+        {
+            
+        }
+        [DataMember]
+        public int IdCategory { get; set; }
+        [DataMember]
+        public string Name_Category { get; set; }
+        [DataMember]
+        public string Description_Category { get; set; }
+        [DataMember]
+        public Nullable<int> IdParent_Category { get; set; }
+        
+        
     }
 }

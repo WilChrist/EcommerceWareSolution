@@ -32,7 +32,7 @@ namespace EcommerceWare.API.Controllers
         }
 
         // GET: api/Customers/5
-        public CustomersForView Post()
+        /*public CustomersForView Post()
         {
             ecommerceEntities db = new ecommerceEntities();
 
@@ -49,7 +49,7 @@ namespace EcommerceWare.API.Controllers
             {
                 return null;
             }
-        }
+        }*/
 
         // POST: api/Customers
         public void Post([FromBody]string value)

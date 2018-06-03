@@ -82,11 +82,20 @@
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
-                                <li><a href="Account/Details"><i class="fa fa-user"></i> Account</a></li>
+                                
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="Account/Checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="Home/Cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="Account"><i class="fa fa-lock"></i> Login</a></li>
+                                @if (Session["user"] == null)
+                                {
+                                    <li><a href="Account"><i class="fa fa-lock"></i> Login</a></li>
+                                        }
+                                        else
+                                        {
+                                            EcommerceWare.Models.CustomersForView customer = (EcommerceWare.Models.CustomersForView)Session["user"];
+                                            <li><a href="Account/Detail"><i class="fa fa-user"></i> @customer.Contact.FirstName</a></li>
+                                        }
+
                             </ul>
                         </div>
                     </div>

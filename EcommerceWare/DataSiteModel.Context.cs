@@ -25,8 +25,8 @@ namespace EcommerceWare
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Article> Articles { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        //public virtual DbSet<Article> Articles { get; set; }
+        //public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Order_> Order_ { get; set; }
         public virtual DbSet<User_> User_ { get; set; }
     }
