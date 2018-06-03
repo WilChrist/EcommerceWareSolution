@@ -1,5 +1,5 @@
 @Html.ActionLink("Nom de l'application", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
+.
 <div class="item">
                             <div class="col-sm-6">
                                 <h1><span>E</span>-commerce<span>W</span>are</h1>

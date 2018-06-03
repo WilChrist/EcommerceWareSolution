@@ -7,29 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EcommerceWare.Models
+namespace EcommerceWare.API.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Categories
+    using System.Runtime.Serialization;
+
+    [DataContract]
+    public class CategoriesForView
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Categories()
+        public CategoriesForView()
         {
-            this.Categories1 = new HashSet<Categories>();
-            this.Products = new HashSet<Products>();
+            
         }
-    
+        [DataMember]
         public int IdCategory { get; set; }
+        [DataMember]
         public string Name_Category { get; set; }
+        [DataMember]
         public string Description_Category { get; set; }
+        [DataMember]
         public Nullable<int> IdParent_Category { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Categories> Categories1 { get; set; }
-        public virtual Categories Categories2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Products> Products { get; set; }
+        
+        
     }
 }
