@@ -7,11 +7,11 @@ using System.Web;
 namespace EcommerceWare.API.Models
 {
     [DataContract]
-    public class AdressesForView
+    public class AddressesForView
     {
-        public AdressesForView() { }
+        public AddressesForView() { }
 
-        public AdressesForView(Addresses ad) {
+        public AddressesForView(Addresses ad) {
             this.IdAddress = ad.IdAddress;
             this.Country = ad.Country;
             this.City = ad.City;

@@ -16,6 +16,8 @@ namespace EcommerceWare.API.Models
             this.IdContact = cu.IdContact;
             this.IdMainAddress = cu.IdMainAddress;
             this.IdLogin_information = this.IdLogin_information;
+            this.Address = new AddressesForView(cu.Addresses);
+            this.Contact = new ContactsForView(cu.Contacts);
         }
 
         [DataMember]
@@ -26,5 +28,9 @@ namespace EcommerceWare.API.Models
         public Nullable<int> IdMainAddress { get; set; }
         [DataMember]
         public int IdLogin_information { get; set; }
+        [DataMember]
+        public AddressesForView Address { get; set; }
+        [DataMember]
+        public ContactsForView Contact { get; set; }
     }
 }
