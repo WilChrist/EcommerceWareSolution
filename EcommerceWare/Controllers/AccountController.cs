@@ -1,4 +1,4 @@
-﻿using EcommerceWare.API.Models;
+﻿
 using EcommerceWare.Models;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace EcommerceWare.Controllers
         {
             if (Session["user"] != null)
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
             }
             return View();
         }
@@ -30,7 +30,7 @@ namespace EcommerceWare.Controllers
                 Login_informationsForView login = new Login_informationsForView();
                 login.Login = Login;
                 login.Password = Password;
-                HttpResponseMessage response = Poster(login,"api/Customers");
+                HttpResponseMessage response = Poster(login, "api/Customers");
                 CustomersForView customers = new CustomersForView();
                 if (response.IsSuccessStatusCode)
                 {
@@ -141,19 +141,19 @@ namespace EcommerceWare.Controllers
             }
         }
         public HttpResponseMessage Poster(Login_informationsForView login, string path)
-            {
-                HttpClient client = new HttpClient();
+        {
+            HttpClient client = new HttpClient();
 
-                // Update port # in the following line.
-                client.BaseAddress = new Uri("http://192.168.1.12:8088/");
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(
-                    new MediaTypeWithQualityHeaderValue("application/json"));
-        
-                HttpResponseMessage response = client.PostAsJsonAsync<Login_informationsForView>(path,login).Result;
-                return response;
-        
-            }
+            // Update port # in the following line.
+            client.BaseAddress = new Uri("http://192.168.1.12:8088/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.PostAsJsonAsync<Login_informationsForView>(path, login).Result;
+            return response;
+
+        }
     }
-    
+
 }

@@ -586,7 +586,7 @@
 
             var id = parseInt($(this).attr('id'));
             var dat = { "id": id };
-            alert("jquery");
+            //alert("jquery");
 
         $.ajax({
             type: "POST",
@@ -594,8 +594,10 @@
             content: "application/json; charset=utf-8",
             dataType: "json",
             data: dat,
-            success: function(d) {
-                $('o7').html(d);
+            success: function (d) {
+                var num = $('#cart').attr("data-count"); num++;
+                $('#cart').attr("data-count", num);
+                //alert($('#cart').data('count'));
             }
         });
     });

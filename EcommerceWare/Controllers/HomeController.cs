@@ -15,8 +15,6 @@ namespace EcommerceWare.Controllers
         Donnees donnees = new Donnees();
         public ActionResult Index()
         {
-            donnees.Cart = new List<ProductForView>();
-            Session["cart"] = donnees.Cart;
 
             donnees.Customers = (CustomersForView)Session["user"];
             chargerDonnees(donnees);
@@ -246,8 +244,6 @@ namespace EcommerceWare.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            donnees.Cart = (List<ProductForView>)Session["cart"];
-
             return View();
         }
 
@@ -263,14 +259,11 @@ namespace EcommerceWare.Controllers
         public JsonResult AddToCart(int id)
         {
             chargerDonnees(donnees);
-            if (Session["cart"] == null)
-            {
-                donnees.Cart = new List<ProductForView>();
-                Session["cart"] = donnees.Cart;
-            }
+
 
             //donnees.Cart = (List<ProductForView>)Session["cart"];
             donnees.Cart.Add(donnees.ProductsFeature.SingleOrDefault(p => p.IdProduct == id));
+            Session["cart"] = donnees.Cart;
             Res res = new Res() { Value = true };
             return Json(res, JsonRequestBehavior.AllowGet);
         }
@@ -302,7 +295,23 @@ namespace EcommerceWare.Controllers
             {
                 donnees.Categories = response.Content.ReadAsAsync<List<CategoriesForView>>().Result;
             }
-            donnees.Cart = (List<ProductForView>)HttpContext.Session["cart"];
+
+            if (Session["cart"] == null)
+            {
+                donnees.Cart = new List<ProductForView>();
+                Session["cart"] = donnees.Cart;
+            }
+            else
+            {
+                donnees.Cart = (List<ProductForView>)HttpContext.Session["cart"];
+            }
+
+        }
+        public ActionResult Cart()
+        {
+            ViewBag.Message = "Welcome to your Cart.";
+
+            return View();
         }
         public class Res { public Boolean Value { get; set; } }
     }

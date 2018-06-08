@@ -2565,39 +2565,7 @@ h2.title {
 
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
-}
-/*Downloaded from https://www.codeseek.co/jmalatia/font-awesome-icon-with-number-badgelabel-MJaVxL */
-#ex4 .p1[data-count]:after {
-    position: absolute;
-    right: 10%;
-    top: 8%;
-    content: attr(data-count);
-    font-size: 40%;
-    padding: .2em;
-    border-radius: 50%;
-    line-height: 1em;
-    color: white;
-    background: rgba(255, 0, 0, 0.85);
-    text-align: center;
-    min-width: 1em;
-}
-
-#ex3 .fa-stack[data-count]:after {
-    position: absolute;
-    right: 0%;
-    top: 1%;
-    content: attr(data-count);
-    font-size: 30%;
-    padding: .6em;
-    border-radius: 50%;
-    line-height: .8em;
-    color: white;
-    background: rgba(255, 0, 0, 0.85);
-    text-align: center;
-    min-width: 1em;
-    font-weight: bold;
-}
-
+}=
 /* on ex2 if you include bootstrap v3 css the number is a rounded circle with the .has-badge class 
 .shop-menu.fa-stack[data-count]:after {
     position: absolute;
@@ -2642,24 +2610,23 @@ h2.title {
     border: 1px solid blue;
 }*/
 .shop-menu .icon-blue {
-    color: #0088cc
+    color: red;
 }
 
 .shop-menu .icon-grey {
-    color: grey
+    color: green;
 }
 
 .shop-menu #cart i {
-    width: 100px;
-    text-align: center;
-    vertical-align: middle;
-    position: relative;
 }
-
+.shop-menu .badge{
+    display:inline-block;
+    background-color:none;
+}
 .shop-menu .badge:after {
-    content: "100";
+    content: attr(data-count);
     position: absolute;
-    background: rgba(0,0,255,1);
+    background: orange;
     height: 2rem;
     top: 1rem;
     right: 1.5rem;

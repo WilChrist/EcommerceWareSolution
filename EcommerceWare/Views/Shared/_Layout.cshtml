@@ -87,11 +87,9 @@
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="Account/Checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 
-                                <li id="cart"><a href="Home/Cart">
-                                        <!--<span class="p1 fa-stack fa-2x has-badge" data-count="4">
-                                            <i class="p3 fa fa-shopping-cart fa-stack-1x xfa-inverse" data-count="4b"></i>
-                                          </span>--> 
-                                        <i class="fa fa-shopping-cart icon-grey badge"></i>Cart</a></li>
+                                <li ><a href="Home/Cart">
+                                         @{ var cartt = (List<EcommerceWare.Models.ProductForView>)Session["cart"]; }
+                                        <i id="cart" class="badge fa fa-shopping-cart" data-count="@cartt.Count"></i>Cart</a></li>
                                 @if (Session["user"] == null)
                                 {
                                     <li><a href="Account"><i class="fa fa-lock"></i> Login</a></li>
