@@ -1673,8 +1673,8 @@ h2.title {
 }
 
 .cart_product {
-  display: block;
-  margin: 15px -70px 10px 25px;
+    /*display: block;*/
+    margin: 15px -70px 10px 25px;
 }
 
 .cart_quantity_button a {
@@ -2565,7 +2565,7 @@ h2.title {
 
 .contact-info .social-networks ul li a:hover{
   color: #FE980F;
-}=
+}
 /* on ex2 if you include bootstrap v3 css the number is a rounded circle with the .has-badge class 
 .shop-menu.fa-stack[data-count]:after {
     position: absolute;

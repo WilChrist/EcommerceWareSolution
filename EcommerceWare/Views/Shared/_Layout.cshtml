@@ -5,9 +5,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - EcommerceWare</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="~/Content/css/animate.css" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/css/main.css" />
+    <link rel="stylesheet" href="~/Content/css/prettyPhoto.css" />
+    <link rel="stylesheet" href="~/Content/css/price-range.css" />
+    <link rel="stylesheet" href="~/Content/css/responsive.css"/>
+     
+         @*@ @Styles.Render("~/Content/css")*@
+          @Scripts.Render("~/bundles/modernizr")
+          @Scripts.Render("~/bundles/jquery")
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -88,11 +96,11 @@
                                 <li><a href="Account/Checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 
                                 <li ><a href="Home/Cart">
-                                         @{ var cartt = (List<EcommerceWare.Models.ProductForView>)Session["cart"]; }
+                                         @{ var cartt = (List<EcommerceWare.Models.ProductForView>)Session["cart"]; if (cartt == null) { cartt = new List<EcommerceWare.Models.ProductForView>(); } }
                                         <i id="cart" class="badge fa fa-shopping-cart" data-count="@cartt.Count"></i>Cart</a></li>
                                 @if (Session["user"] == null)
                                 {
-                                    <li><a href="Account"><i class="fa fa-lock"></i> Login</a></li>
+                                    <li><a href="/Account"><i class="fa fa-lock"></i> Login</a></li>
                                         }
                                         else
                                         {

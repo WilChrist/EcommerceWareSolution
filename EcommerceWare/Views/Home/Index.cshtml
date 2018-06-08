@@ -36,7 +36,7 @@
                                     <div>
                                         <span class="pricingr"></span>
                                         <span class="pricingo"></span>
-                                        <span class="pricingg"><s>@{var ppr = Convert.ToInt32(@item.Net_Price);} @ppr$</s> <br />@{var pr = Convert.ToInt32(@item.Gross_Price);} @pr$ </span>
+                                        <span class="pricingg"><s>@{var ppr = Convert.ToInt32(@item.Gross_Price);} @ppr$</s> <br />@{var pr = Convert.ToInt32(@item.Net_Price);} @pr$ </span>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
                     <h2 class="title text-center">Features Items</h2>
                     @foreach (var p in productsf)
                     {
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" id="@p.IdProduct">
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
@@ -165,7 +165,7 @@
                                         <div class="overlay-content">
                                             <h2>@p.Net_Price $</h2>
                                             <p>@p.Name_Product</p>
-                                            <a href="#" class="btn btn-default add-to-cart" id="@p.IdProduct"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="#@p.IdProduct" class="btn btn-default add-to-cart" id="@p.IdProduct"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                     </div>
                                     @if (p.Quantity_Possessed == 0)

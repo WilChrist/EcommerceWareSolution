@@ -273,7 +273,7 @@ namespace EcommerceWare.Controllers
             HttpClient client = new HttpClient();
 
             // Update port # in the following line.
-            client.BaseAddress = new Uri("http://192.168.1.12:8088/");
+            client.BaseAddress = new Uri("http://192.168.43.43:8088/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

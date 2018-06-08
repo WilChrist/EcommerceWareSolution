@@ -46,15 +46,32 @@ namespace EcommerceWare.Controllers
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
+
             }
         }
         [HttpPost]
-        public ActionResult SignUp(FormCollection collection)
+        public ActionResult SignUp(SignUpData signUpData)
         {
             try
             {
                 // TODO: Add insert logic here
+                /*SignUpData signUpData = new SignUpData();
+                signUpData.Login = login;
+                signUpData.Last_name = name;
+                signUpData.Email = email;
+                signUpData.Password = password;*/
+                HttpResponseMessage response = SignUp(signUpData, "api/Customers/AddCustomers");
+                CustomersForView customers = new CustomersForView();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Login(signUpData.Login, signUpData.Password);
+                }
+                else
+                {
+                    ViewBag.error = "error";
+                }
 
                 return RedirectToAction("Index");
             }
@@ -145,12 +162,26 @@ namespace EcommerceWare.Controllers
             HttpClient client = new HttpClient();
 
             // Update port # in the following line.
-            client.BaseAddress = new Uri("http://192.168.1.12:8088/");
+            client.BaseAddress = new Uri("http://192.168.43.43:8088/");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
             HttpResponseMessage response = client.PostAsJsonAsync<Login_informationsForView>(path, login).Result;
+            return response;
+
+        }
+        public HttpResponseMessage SignUp(SignUpData login, string path)
+        {
+            HttpClient client = new HttpClient();
+
+            // Update port # in the following line.
+            client.BaseAddress = new Uri("http://192.168.43.43:8088/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.PutAsJsonAsync<SignUpData>(path, login).Result;
             return response;
 
         }

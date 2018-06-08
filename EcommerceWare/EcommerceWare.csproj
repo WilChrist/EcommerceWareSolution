@@ -191,6 +191,7 @@
     <Compile Include="Models\Interfaces\IProduct.cs" />
     <Compile Include="Models\Login_informationsForView.cs" />
     <Compile Include="Models\ProductForView.cs" />
+    <Compile Include="Models\SignUpData.cs" />
     <Compile Include="Order_.cs">
       <DependentUpon>DataSiteModel.tt</DependentUpon>
     </Compile>
@@ -307,6 +308,7 @@
     <Content Include="DataSiteModel.edmx.diagram">
       <DependentUpon>DataSiteModel.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -335,7 +337,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Home\AddToCart.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
