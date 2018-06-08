@@ -1,6 +1,5 @@
 ﻿
 using EcommerceWare.Models;
-using EcommerceWare.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,36 +12,14 @@ namespace EcommerceWare.Controllers
 {
     public class HomeController : Controller
     {
+        Donnees donnees = new Donnees();
         public ActionResult Index()
         {
-            Donnees donnees = new Donnees();
+            donnees.Cart = new List<ProductForView>();
+            Session["cart"] = donnees.Cart;
 
             donnees.Customers = (CustomersForView)Session["user"];
-            HttpClient client = new HttpClient();
-
-            // Update port # in the following line.
-            client.BaseAddress = new Uri("http://192.168.1.12:8088/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
-
-            HttpResponseMessage response = client.GetAsync("api/products").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                donnees.ProductsFeature = response.Content.ReadAsAsync<List<ProductForView>>().Result;
-            }
-
-            response = client.GetAsync("api/products").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                donnees.ProductsCaroussel = response.Content.ReadAsAsync<List<ProductForView>>().Result;
-            }
-
-            response = client.GetAsync("api/categories").Result;
-            if (response.IsSuccessStatusCode)
-            {
-                donnees.Categories = response.Content.ReadAsAsync<List<CategoriesForView>>().Result;
-            }
+            chargerDonnees(donnees);
 
             //Test Data for Categories
             /*List<CategoriesForView> categories = new List<CategoriesForView>();
@@ -261,13 +238,15 @@ namespace EcommerceWare.Controllers
             productss.Add(producte);
             donnees.ProductsFeature = productss;*/
 
-            if (donnees.Categories.FirstOrDefault(cat =>cat.IdParent_Category == 1) != null) { ViewBag.test = donnees.Categories.FirstOrDefault(cat => cat.IdParent_Category == 1).Name_Category; }
+            if (donnees.Categories.FirstOrDefault(cat => cat.IdParent_Category == 1) != null) { ViewBag.test = donnees.Categories.FirstOrDefault(cat => cat.IdParent_Category == 1).Name_Category; }
             return View(donnees);
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            donnees.Cart = (List<ProductForView>)Session["cart"];
 
             return View();
         }
@@ -279,5 +258,52 @@ namespace EcommerceWare.Controllers
             return View();
         }
 
+        // GET: Home/AddToCart/5
+        [HttpPost]
+        public JsonResult AddToCart(int id)
+        {
+            chargerDonnees(donnees);
+            if (Session["cart"] == null)
+            {
+                donnees.Cart = new List<ProductForView>();
+                Session["cart"] = donnees.Cart;
+            }
+
+            //donnees.Cart = (List<ProductForView>)Session["cart"];
+            donnees.Cart.Add(donnees.ProductsFeature.SingleOrDefault(p => p.IdProduct == id));
+            Res res = new Res() { Value = true };
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+        public void chargerDonnees(Donnees donnees)
+        {
+            HttpClient client = new HttpClient();
+
+            // Update port # in the following line.
+            client.BaseAddress = new Uri("http://192.168.1.12:8088/");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpResponseMessage response = client.GetAsync("api/products").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donnees.ProductsFeature = response.Content.ReadAsAsync<List<ProductForView>>().Result;
+            }
+
+            response = client.GetAsync("api/products").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donnees.ProductsCaroussel = response.Content.ReadAsAsync<List<ProductForView>>().Result;
+            }
+
+            response = client.GetAsync("api/categories").Result;
+            if (response.IsSuccessStatusCode)
+            {
+                donnees.Categories = response.Content.ReadAsAsync<List<CategoriesForView>>().Result;
+            }
+            donnees.Cart = (List<ProductForView>)HttpContext.Session["cart"];
+        }
+        public class Res { public Boolean Value { get; set; } }
     }
 }

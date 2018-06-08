@@ -18,10 +18,12 @@
                     </ol>
 
                     <div class="carousel-inner">
+                        @{ var ii = 0;}
                         @foreach (var item in Model.ProductsCaroussel)
                         {
+                            ii++;
                             string c;
-                            if (item.IdProduct == 0) { c="item active"; } else { c="item"; }
+                            if (item.IdProduct == 1) { c = "item active"; } else { c = "item"; }
                             <div class="@c">
                                 <div class="col-sm-6">
                                     <h1>@item.Name_Product </h1>
@@ -34,11 +36,13 @@
                                     <div>
                                         <span class="pricingr"></span>
                                         <span class="pricingo"></span>
-                                        <span class="pricingg"><s>@(item.Net_Price + 5) $</s> <br />@item.Gross_Price $ </span>
+                                        <span class="pricingg"><s>@{var ppr = Convert.ToInt32(@item.Net_Price);} @ppr$</s> <br />@{var pr = Convert.ToInt32(@item.Gross_Price);} @pr$ </span>
                                     </div>
                                 </div>
                             </div>
-                        }
+                                                if (ii >= 3) { break; }
+
+                                            }
 
                     </div>
 
@@ -60,7 +64,7 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="left-sidebar">
-                    <h2>Category</h2>
+                    <h2 id="o7">Category</h2>
                     <div class="panel-group category-products" id="accordian">
                         <!--category-productsr-->
                         @foreach (var item in Model.Categories)
@@ -154,13 +158,14 @@
                                         <img src="@p.Image_Url" alt="Image of @p.Name_Product" />
                                         <h2>@p.Net_Price $</h2>
                                         <p>@p.Name_Product</p>
-                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart </a>
                                     </div>
                                     <div class="product-overlay">
                                         <div class="overlay-content">
                                             <h2>@p.Net_Price $</h2>
                                             <p>@p.Name_Product</p>
-                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="#" class="btn btn-default add-to-cart" id="@p.IdProduct"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                         </div>
                                     </div>
                                     @if (p.Quantity_Possessed == 0)
@@ -574,4 +579,25 @@
             </div>
         </div>
     </div>
+    <script>
+        $('.add-to-cart').on('click', function() {
+
+        // TODO: Validate input
+
+            var id = parseInt($(this).attr('id'));
+            var dat = { "id": id };
+            alert("jquery");
+
+        $.ajax({
+            type: "POST",
+            url: '@Url.Action("AddToCart","home")',
+            content: "application/json; charset=utf-8",
+            dataType: "json",
+            data: dat,
+            success: function(d) {
+                $('o7').html(d);
+            }
+        });
+    });
+    </script>
 </section>

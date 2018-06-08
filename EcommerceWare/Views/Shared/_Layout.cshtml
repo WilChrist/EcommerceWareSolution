@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - EcommerceWare</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -28,7 +29,7 @@
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
                                 <li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> info@ecommerceware.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -85,7 +86,12 @@
                                 
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="Account/Checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                                <li><a href="Home/Cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+
+                                <li id="cart"><a href="Home/Cart">
+                                        <!--<span class="p1 fa-stack fa-2x has-badge" data-count="4">
+                                            <i class="p3 fa fa-shopping-cart fa-stack-1x xfa-inverse" data-count="4b"></i>
+                                          </span>--> 
+                                        <i class="fa fa-shopping-cart icon-grey badge"></i>Cart</a></li>
                                 @if (Session["user"] == null)
                                 {
                                     <li><a href="Account"><i class="fa fa-lock"></i> Login</a></li>
@@ -314,9 +320,9 @@
             </div>
 
         </footer><!--/Footer-->
-    </div>
+    
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/others")
     @RenderSection("scripts", required: false)

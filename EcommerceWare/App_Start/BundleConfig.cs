@@ -11,7 +11,8 @@ namespace EcommerceWare
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                       "~/Content/js/jquery.scrollUp.min.js", 
                       "~/Content/js/jquery.prettyPhoto.js",
-                        "~/Content/js/jquery.js"));
+                        "~/Content/js/jquery.js",
+                        "~/Scripts/jquery.unobtrusive-ajax.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));

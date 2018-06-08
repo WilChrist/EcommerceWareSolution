@@ -13,15 +13,11 @@ namespace EcommerceWare.Models
         {
 
         }
-        CustomersForView customers;
-        List<ProductForView> productsCaroussel;
-        List<ProductForView> productsFeature;
-        List<CategoriesForView> categories;
-
-        public List<ProductForView> ProductsCaroussel { get => productsCaroussel; set => productsCaroussel = value; }
-        public List<CategoriesForView> Categories { get => categories; set => categories = value; }
-        public List<ProductForView> ProductsFeature { get => productsFeature; set => productsFeature = value; }
-        public CustomersForView Customers { get => customers; set => customers = value; }
+        public List<ProductForView> ProductsCaroussel { get; set; }
+        public List<CategoriesForView> Categories { get; set; }
+        public List<ProductForView> ProductsFeature { get; set; }
+        public CustomersForView Customers { get; set; }
+        public List<ProductForView> Cart { get; set; }
         /*List<Products> productsCaroussel;
 Login_informations login_Informations;
 Customers customers;*/
