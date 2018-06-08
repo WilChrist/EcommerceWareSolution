@@ -244,6 +244,7 @@
     <Compile Include="Models\IViewService.cs" />
     <Compile Include="Models\Login_informationsForView.cs" />
     <Compile Include="Models\ProductForView.cs" />
+    <Compile Include="Models\SignUpData.cs" />
     <Compile Include="Models\ViewServiceImp.cs" />
     <Compile Include="Orders.cs">
       <DependentUpon>Model1.tt</DependentUpon>
